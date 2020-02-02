@@ -234,15 +234,15 @@ open class TagView: UIButton {
         super.layoutSubviews()
         if let _ = imageView?.image {
             // ImageView size is square, and slightly larger than the text
-            imageView?.frame.size.width = imageWidth
-            imageView?.frame.size.height = imageWidth
-            imageView?.frame.origin.x = imagePaddingX
-            imageView?.frame.origin.y = imagePaddingY
+            imageView?.frame.size.width = imageWidth * 0.625
+            imageView?.frame.size.height = imageWidth * 0.625
+            imageView?.frame.origin.x = imagePaddingX + (imageWidth * 0.375)
+            imageView?.frame.origin.y = imagePaddingY + (imageWidth * 0.1875)
             
             // TitleLabel disappears if not explicitly set
             titleLabel?.frame.size.width = titleLabel?.text?.size(withAttributes: [NSAttributedString.Key.font: textFont]).width ?? 0
             titleLabel?.frame.size.height = textFont.pointSize + paddingY*2
-            titleLabel?.frame.origin.x = imageView!.frame.maxX + paddingX
+            titleLabel?.frame.origin.x = imageView!.frame.maxX + 8
             titleLabel?.frame.origin.y = 0
         } else {
             imageView?.frame = CGRect.zero
